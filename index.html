@@ -113,6 +113,9 @@
 
     const squares = [];
 
+    // Load tick sound
+    const tickSound = new Audio('tick.mp3');
+
     // Populate the fields, one half day, one half night
     for (let i = 0; i < numSquaresX; i++) {
       squares[i] = [];
@@ -179,6 +182,10 @@
           if (squares[i][j] !== ball.reverseColor) {
             // Square hit! Update square color
             squares[i][j] = ball.reverseColor;
+
+            // Play tick sound
+            tickSound.currentTime = 0;
+            tickSound.play();
 
             // Determine bounce direction based on the angle
             if (Math.abs(Math.cos(angle)) > Math.abs(Math.sin(angle))) {
